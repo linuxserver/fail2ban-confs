@@ -1,0 +1,28 @@
+# Ignore everything
+*
+
+# Do NOT ignore repo files files
+!.editorconfig
+!.gitattributes
+!.github
+!.gitignore
+!LICENSE
+!README.md
+
+# Do NOT ignore allowed files
+!*.conf
+
+# Do NOT ignore allowed subfolders
+!action.d/
+!filter.d/
+!jail.d/
+
+# Ignore all files in allowed subfolders
+action.d/*
+filter.d/*
+jail.d/*
+
+# Do NOT ignore allowed files in allowed subfolders
+!action.d/*.conf
+!filter.d/*.conf
+!jail.d/*.conf
