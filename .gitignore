@@ -4,7 +4,8 @@
 # Do NOT ignore repo files files
 !.editorconfig
 !.gitattributes
-!.github
+!.github/*
+!.github/workflows/*
 !.gitignore
 !LICENSE
 !README.md
