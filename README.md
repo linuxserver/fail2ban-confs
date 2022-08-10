@@ -81,32 +81,38 @@ ignoreip    = 127.0.0.1/8 ::1
 [sshd]
 # configuration inherits from jail.conf
 enabled = true
-action  = %(known/action)s[chain="INPUT"]
+chain   = INPUT
+action  = %(known/action)s
 
 [nginx-http-auth]
 # configuration inherits from jail.conf
 enabled = true
-action  = %(known/action)s[chain="DOCKER-USER"]
+chain   = DOCKER-USER
+action  = %(known/action)s
 
 [nginx-badbots]
 # configuration inherits from jail.d/nginx-badbots.conf
 enabled = true
-action  = %(known/action)s[chain="DOCKER-USER"]
+chain   = DOCKER-USER
+action  = %(known/action)s
 
 [nginx-botsearch]
 # configuration inherits from jail.conf
 enabled = true
-action  = %(known/action)s[chain="DOCKER-USER"]
+chain   = DOCKER-USER
+action  = %(known/action)s
 
 [nginx-deny]
 # configuration inherits from jail.d/nginx-deny.conf
 enabled = true
-action  = %(known/action)s[chain="DOCKER-USER"]
+chain   = DOCKER-USER
+action  = %(known/action)s
 
 [nginx-unauthorized]
 # configuration inherits from jail.d/nginx-unauthorized.conf
 enabled = true
-action  = %(known/action)s[chain="DOCKER-USER"]
+chain   = DOCKER-USER
+action  = %(known/action)s
 ```
 
 ### Incremental Banning
@@ -149,13 +155,15 @@ Both of these jails protect unRAID at the host level using the `INPUT` chain.
 [unraid-sshd]
 # configuration inherits from jail.d/unraid-sshd.conf
 enabled = true
-action  = %(known/action)s[chain="INPUT"]
+chain   = INPUT
+action  = %(known/action)s
 
 [unraid-webgui]
 # configuration inherits from jail.d/unraid-webgui.conf
 enabled = true
+chain   = INPUT
 port    = http,https,YOUR-UNRAID-MY-SERVERS-WAN-PORT
-action  = %(known/action)s[chain="INPUT"]
+action  = %(known/action)s
 ```
 
 ### Unifi-Controller
@@ -167,7 +175,8 @@ Add these lines to enable the jail for Unifi-Controller.
 [unifi-controller-auth]
 # configuration inherits from jail.d/unifi-controller-auth.conf
 enabled = true
-action  = %(known/action)s[chain="DOCKER-USER"]
+chain   = DOCKER-USER
+action  = %(known/action)s
 ```
 
 ### Additional Actions
@@ -186,12 +195,12 @@ abuseipdb_apikey = YOUR-API-KEY
 
 [sshd]
 # Apply additional actions only to bans for the sshd jail
-action  = %(known/action)s[chain="INPUT"]
+action  = %(known/action)s
           abuseipdb[abuseipdb_apikey="%(abuseipdb_apikey)s", abuseipdb_category="18,22"]
 
 [unifi-controller-auth]
 # Apply additional actions only to bans for the unifi-controller-auth jail
-action  = %(known/action)s[chain="DOCKER-USER"]
+action  = %(known/action)s
           abuseipdb[abuseipdb_apikey="%(abuseipdb_apikey)s", abuseipdb_category="18,21"]
 
 ```
@@ -246,26 +255,30 @@ abuseipdb_apikey = YOUR-API-KEY
 [unraid-sshd]
 # configuration inherits from jail.d/unraid-sshd.conf
 enabled = true
-action  = %(known/action)s[chain="INPUT"]
+chain   = INPUT
+action  = %(known/action)s
           abuseipdb[abuseipdb_apikey="%(abuseipdb_apikey)s", abuseipdb_category="18,22"]
 
 [unraid-webgui]
 # configuration inherits from jail.d/unraid-webgui.conf
 enabled = true
+chain   = INPUT
 port    = http,https,YOUR-UNRAID-MY-SERVERS-WAN-PORT
-action  = %(known/action)s[chain="INPUT"]
+action  = %(known/action)s
           abuseipdb[abuseipdb_apikey="%(abuseipdb_apikey)s", abuseipdb_category="18,21"]
 
 [unifi-controller-auth]
 # configuration inherits from jail.d/unifi-controller-auth.conf
 enabled = true
-action  = %(known/action)s[chain="DOCKER-USER"]
+chain   = DOCKER-USER
+action  = %(known/action)s
           abuseipdb[abuseipdb_apikey="%(abuseipdb_apikey)s", abuseipdb_category="18,21"]
 
 [vaultwarden-auth]
 # configuration inherits from jail.d/vaultwarden-auth.conf
 enabled = true
-action  = %(known/action)s[chain="DOCKER-USER"]
+chain   = DOCKER-USER
+action  = %(known/action)s
           abuseipdb[abuseipdb_apikey="%(abuseipdb_apikey)s", abuseipdb_category="18,21"]
 
 ```
@@ -286,7 +299,7 @@ port    = 8081,8442
 logpath = /path/to/unificontroller/server.log
 
 # If you are running the unifi-controller on your host (not in a docker container) you can change the chain to INPUT
-#action  = %(known/action)s[chain="INPUT"]
+#chain   = INPUT
 # If you are running the unifi-controller in a docker container you can change the chain to DOCKER-USER
-#action  = %(known/action)s[chain="DOCKER-USER"]
+#chain   = DOCKER-USER
 ```
