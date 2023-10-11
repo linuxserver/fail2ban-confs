@@ -1,0 +1,7 @@
+[INCLUDES]
+
+before =  common.conf
+
+[Definition]
+failregex = ^.*Failed password for (.*)from <HOST>
+ignoreregex = 
